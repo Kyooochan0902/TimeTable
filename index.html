@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>時間割｜宇部高専</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/canvg/1.5/canvg.min.js"></script>
+</head>
+<body>
+    <div class="main-contents">
+        <button id="exportButton">エクスポート</button>
+        <div class="title">時間割</div>
+        <div class="checkbox-zone">
+            <input type="checkbox" id="check-lunch" checked>
+            <label for="check-lunch">昼休憩表示</label>
+            <input type="checkbox" id="check-clean" checked>
+            <label for="check-clean">掃除時間表示</label>
+            <input type="checkbox" id="check-teacher" checked>
+            <label for="check-teacher">教師名表示</label>
+            <input type="checkbox" id="check-location" checked>
+            <label for="check-location">教室名表示</label>
+        </div>
+
+        <table id="Time-manage">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>月</th>
+                    <th>火</th>
+                    <th>水</th>
+                    <th>木</th>
+                    <th>金</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>
+                        <div class="time">8:50</div>
+                        1
+                    </th>
+                    <td class="monday-1 monday-1-2" rowspan="2">
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="monday-1-botConnect">下と結合</button><button id="monday-1-break">セル分解</button>
+                    </td>
+                    <td class="tuesday-1 tuesday-1-2" rowspan="2">
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="tuesday-1-botConnect">下と結合</button><button id="tuesday-1-break">セル分解</button>
+                    </td>
+                    <td class="wednesday-1 wednesday-1-2" rowspan="2">
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="wednesday-1-botConnect">下と結合</button><button id="wednesday-1-break">セル分解</button>
+                    </td>
+                    <td class="thursday-1 thursday-1-2" rowspan="2">
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="thursday-1-botConnect">下と結合</button><button id="thursday-1-break">セル分解</button>
+                    </td>
+                    <td class="friday-1 friday-1-2" rowspan="2">
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="friday-1-botConnect">下と結合</button><button id="friday-1-break">セル分解</button>
+                    </td>
+                </tr>
+                <tr >
+                    <th>
+                        2
+                        <div class="time">10:20</div>
+                    </th>
+                    <td class="monday-2 display-none" rowspan="1">
+                        <button id="monday-2-upConnect">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="monday-2-botConnect">下と結合</button><button id="monday-2-break">セル分解</button>
+                    </td>
+                    <td class="tuesday-2 display-none" rowspan="1">
+                        <button id="tuesday-2-upConnect">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="tuesday-2-botConnect">下と結合</button><button id="tuesday-2-break">セル分解</button>
+                    </td>
+                    <td class="wednesday-2 display-none" rowspan="1">
+                        <button id="wednesday-2-upConnect">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="wednesday-2-botConnect">下と結合</button><button id="wednesday-2-break">セル分解</button>
+                    </td>
+                    <td class="thursday-2 display-none" rowspan="1">
+                        <button id="thursday-2-upConnect">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="thursday-2-botConnect">下と結合</button><button id="thursday-2-break">セル分解</button>
+                    </td>
+                    <td class="friday-2 display-none" rowspan="1">
+                        <button id="friday-2-upConnect">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="friday-2-botConnect">下と結合</button><button id="friday-2-break">セル分解</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <div class="time">10:20</div>
+                        3
+                    </th>
+                    <td class="monday-3 monday-3-4" rowspan="2">
+                        <button id="monday-3-upConnect">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="monday-3-botConnect" class="display-none">下と結合</button><button id="monday-3-break">セル分解</button>
+                    </td>
+                    <td class="tuesday-3 tuesday-3-4" rowspan="2">
+                        <button id="tuesday-3-upConnect">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="tuesday-3-botConnect" class="display-none">下と結合</button><button id="tuesday-3-break">セル分解</button>
+                    </td>
+                    <td class="wednesday-3 wednesday-3-4" rowspan="2">
+                        <button id="wednesday-3-upConnect">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="wednesday-3-botConnect" class="display-none">下と結合</button><button id="wednesday-3-break">セル分解</button>
+                    </td>
+                    <td class="thursday-3 thursday-3-4" rowspan="2">
+                        <button id="thursday-3-upConnect">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="thursday-3-botConnect" class="display-none">下と結合</button><button id="thursday-3-break">セル分解</button>
+                    </td>
+                    <td class="friday-3 friday-3-4" rowspan="2">
+                        <button id="friday-3-upConnect">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="friday-3-botConnect" class="display-none">下と結合</button><button id="friday-3-break">セル分解</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        4
+                        <div class="time">12:00</div>
+                        
+                    </th>
+                    <td class="monday-4 display-none">
+                        <button id="monday-4-upConnect">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="monday-4-botConnect">下と結合</button><button id="monday-4-break">セル分解</button>
+                    </td>
+                    <td class="tuesday-4 display-none">
+                        <button id="tuesday-4-upConnect">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="tuesday-4-botConnect">下と結合</button><button id="tuesday-4-break">セル分解</button>
+                    </td>
+                    <td class="wednesday-4 display-none">
+                        <button id="wednesday-4-upConnect">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="wednesday-4-botConnect">下と結合</button><button id="wednesday-4-break">セル分解</button>
+                    </td>
+                    <td class="thursday-4 display-none">
+                        <button id="thursday-4-upConnect">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="thursday-4-botConnect">下と結合</button><button id="thursday-4-break">セル分解</button>
+                    </td>
+                    <td class="friday-4 display-none">
+                        <button id="friday-4-upConnect">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="friday-4-botConnect">下と結合</button><button id="friday-4-break">セル分解</button>
+                    </td>
+                </tr>
+                <tr id="lunch-time">
+                    <td colspan="6">昼食休憩（12:00～12:50）</td>
+                </tr>
+                <tr>
+                    <th>
+                        <div class="time">12:50</div>
+                        5
+                    </th>
+                    <td class="monday-5 monday-5-6" rowspan="2">
+                        <button id="monday-5-upConnect" class="display-none">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="monday-5-botConnect" class="display-none">下と結合</button><button id="monday-5-break">セル分解</button>
+                    </td>
+                    <td class="tuesday-5 tuesday-5-6" rowspan="2">
+                        <button id="tuesday-5-upConnect" class="display-none">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="tuesday-5-botConnect" class="display-none">下と結合</button><button id="tuesday-5-break">セル分解</button>
+                    </td>
+                    <td class="wednesday-5 wednesday-5-6" rowspan="2">
+                        <button id="wednesday-5-upConnect" class="display-none">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="wednesday-5-botConnect" class="display-none">下と結合</button><button id="wednesday-5-break">セル分解</button>
+                    </td>
+                    <td class="thursday-5 thursday-5-6" rowspan="2">
+                        <button id="thursday-5-upConnect" class="display-none">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="thursday-5-botConnect" class="display-none">下と結合</button><button id="thursday-5-break">セル分解</button>
+                    </td>
+                    <td class="friday-5 friday-5-6" rowspan="2">
+                        <button id="friday-5-upConnect" class="display-none">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="friday-5-botConnect" class="display-none">下と結合</button><button id="friday-5-break">セル分解</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        6
+                        <div class="time">14:20</div>
+                    </th>
+                    <td class="monday-6 display-none">
+                        <button id="monday-6-upConnect">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="monday-6-botConnect">下と結合</button><button id="monday-6-break">セル分解</button>
+                    </td>
+                    <td class="tuesday-6 display-none">
+                        <button id="tuesday-6-upConnect">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="tuesday-6-botConnect">下と結合</button><button id="tuesday-6-break">セル分解</button>
+                    </td>
+                    <td class="wednesday-6 display-none">
+                        <button id="wednesday-6-upConnect">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="wednesday-6-botConnect">下と結合</button><button id="wednesday-6-break">セル分解</button>
+                    </td>
+                    <td class="thursday-6 display-none">
+                        <button id="thursday-6-upConnect">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="thursday-6-botConnect">下と結合</button><button id="thursday-6-break">セル分解</button>
+                    </td>
+                    <td class="friday-6 display-none">
+                        <button id="friday-6-upConnect">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="friday-6-botConnect">下と結合</button><button id="friday-6-break">セル分解</button>
+                    </td>
+                </tr>
+                <tr id="clean-time">
+                    <td colspan="6">清掃（14:20～14:30）</td>
+                </tr>
+                <tr>
+                    <th>
+                        <div class="time">14:40</div>
+                        7
+                    </th>
+                    <td class="monday-7 monday-7-8" rowspan="2">
+                        <button id="monday-7-upConnect" class="display-none">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="monday-7-botConnect" class="display-none">下と結合</button><button id="monday-7-break">セル分解</button>
+                    </td>
+                    <td class="tuesday-7 tuesday-7-7" rowspan="1">
+                        <button id="tuesday-7-upConnect" class="display-none">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="tuesday-7-botConnect">下と結合</button><button id="tuesday-7-break" class="display-none">セル分解</button>
+                    </td>
+                    <td class="wednesday-7 wednesday-7-8" rowspan="2">
+                        <button id="wednesday-7-upConnect" class="display-none">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="wednesday-7-botConnect" class="display-none">下と結合</button><button id="wednesday-7-break">セル分解</button>
+                    </td>
+                    <td class="thursday-7 thursday-7-8" rowspan="2">
+                        <button id="thursday-7-upConnect" class="display-none">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="thursday-7-botConnect" class="display-none">下と結合</button><button id="thursday-7-break">セル分解</button>
+                    </td>
+                    <td class="friday-7 friday-7-8" rowspan="2">
+                        <button id="friday-7-upConnect" class="display-none">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                        <button id="friday-7-botConnect" class="display-none">下と結合</button><button id="friday-7-break">セル分解</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        8
+                        <div class="time">16:10</div>
+                    </th>
+                    <td class="monday-8 display-none">
+                        <button id="monday-8-upConnect" class="display-none">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                    </td>
+                    <td class="tuesday-8-8" rowspan="1">
+                        <button id="tuesday-8-upConnect">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                    </td>
+                    <td class="wednesday-8 display-none">
+                        <button id="wednesday-8-upConnect" class="display-none">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                    </td>
+                    <td class="thursday-8 display-none">
+                        <button id="thursday-8-upConnect" class="display-none">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                    </td>
+                    <td class="friday-8 display-none">
+                        <button id="friday-8-upConnect" class="display-none">上と結合</button><br>
+                        <input type="text" value="教科名"><br>
+                        <input type="text" class="teacher-name" value="講師"><br>
+                        <input type="text" class="location-name" value="教室"><br>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
